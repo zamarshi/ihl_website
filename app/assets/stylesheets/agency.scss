@@ -8,6 +8,18 @@ body {
     @include body-font;
 }
 
+.user-sign-in{
+  color: #fff;
+}
+
+.user-sign-up{
+  color: #fff;
+}
+
+.user-sign-up-header{
+  color: #fff;
+  text-align: center;
+}
 
 .text-muted {
     color: $gray-light;

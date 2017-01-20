@@ -21,7 +21,7 @@
               <!-- Brand and toggle get grouped for better mobile display -->
               <div class="navbar-header page-scroll bg-darkest-gray">
 
-                  <a class="navbar-brand page-scroll" href="#page-top">IHL</a>
+                  <a class="navbar-brand page-scroll"> IHL </a>
               </div>
 
               <div class="collapse navbar-collapse bg-darkest-gray" id="bs-example-navbar-collapse-1">
@@ -40,13 +40,14 @@
                         <%= link_to 'Statistics', root_path %>
                       </li>
                       <li>
-                        <%= link_to 'Location', root_path %>
+                        <%= link_to 'Standings', root_path %>
                       </li>
 
                       <% if user_signed_in? %>
                         <li>
-                          <p class="navbar-text">Hello <%= current_user.first_name %></p>
+                          <a> See Your Stats </a>
                         </li>
+
                         <li>
                           <%= button_to 'Sign out',
                             sessions_path,
@@ -54,6 +55,7 @@
                             class: 'btn btn-default navbar-btn'
                             %>
                           </li>
+
                       <% else %>
                         <li><%= link_to 'Sign up with email', new_user_path %></li>
                         <li><%= link_to 'Sign In', new_session_path %></li>
@@ -67,16 +69,6 @@
           <!-- /.container-fluid -->
       </nav>
 
-      <!-- Header -->
-      <header class="bg-darkest-gray">
-          <div class="container bg-darkest-gray">
-              <div class="intro-text">
-                  <div class="intro-lead-in">IHL 2016-2017<div>
-                  <div class="intro-heading"></div>
-                  <a href="#services" class="page-scroll btn btn-xl">Download Schedule</a>
-              </div>
-          </div>
-      </header>
 
 
 
