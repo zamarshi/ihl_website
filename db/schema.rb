@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170119031646) do
+ActiveRecord::Schema.define(version: 20170119230321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,17 @@ ActiveRecord::Schema.define(version: 20170119031646) do
     t.integer  "goal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "player_id"
     t.index ["goal_id"], name: "index_assists_on_goal_id", using: :btree
+    t.index ["player_id"], name: "index_assists_on_player_id", using: :btree
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.integer  "season_id"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["season_id"], name: "index_games_on_season_id", using: :btree
   end
 
   create_table "goals", force: :cascade do |t|
@@ -27,6 +37,8 @@ ActiveRecord::Schema.define(version: 20170119031646) do
     t.integer  "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "game_id"
+    t.index ["game_id"], name: "index_goals_on_game_id", using: :btree
     t.index ["player_id"], name: "index_goals_on_player_id", using: :btree
     t.index ["team_id"], name: "index_goals_on_team_id", using: :btree
   end
@@ -54,6 +66,8 @@ ActiveRecord::Schema.define(version: 20170119031646) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "season_id"
+    t.index ["season_id"], name: "index_teams_on_season_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -67,6 +81,10 @@ ActiveRecord::Schema.define(version: 20170119031646) do
   end
 
   add_foreign_key "assists", "goals"
+  add_foreign_key "assists", "players"
+  add_foreign_key "games", "seasons"
+  add_foreign_key "goals", "games"
   add_foreign_key "goals", "players"
   add_foreign_key "goals", "teams"
+  add_foreign_key "teams", "seasons"
 end
