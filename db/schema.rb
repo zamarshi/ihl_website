@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170119230321) do
+ActiveRecord::Schema.define(version: 20170121220239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,33 @@ ActiveRecord::Schema.define(version: 20170119230321) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "player_games", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "player_id"
+    t.integer  "game_id"
+    t.index ["game_id"], name: "index_player_games_on_game_id", using: :btree
+    t.index ["player_id"], name: "index_player_games_on_player_id", using: :btree
+  end
+
+  create_table "player_seasons", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "player_id"
+    t.integer  "season_id"
+    t.index ["player_id"], name: "index_player_seasons_on_player_id", using: :btree
+    t.index ["season_id"], name: "index_player_seasons_on_season_id", using: :btree
+  end
+
+  create_table "player_teams", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "player_id"
+    t.integer  "team_id"
+    t.index ["player_id"], name: "index_player_teams_on_player_id", using: :btree
+    t.index ["team_id"], name: "index_player_teams_on_team_id", using: :btree
+  end
+
   create_table "players", force: :cascade do |t|
     t.string   "name"
     t.datetime "date_of_birth"
@@ -60,6 +87,15 @@ ActiveRecord::Schema.define(version: 20170119230321) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "team_games", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "team_id"
+    t.integer  "game_id"
+    t.index ["game_id"], name: "index_team_games_on_game_id", using: :btree
+    t.index ["team_id"], name: "index_team_games_on_team_id", using: :btree
   end
 
   create_table "teams", force: :cascade do |t|
@@ -86,5 +122,13 @@ ActiveRecord::Schema.define(version: 20170119230321) do
   add_foreign_key "goals", "games"
   add_foreign_key "goals", "players"
   add_foreign_key "goals", "teams"
+  add_foreign_key "player_games", "games"
+  add_foreign_key "player_games", "players"
+  add_foreign_key "player_seasons", "players"
+  add_foreign_key "player_seasons", "seasons"
+  add_foreign_key "player_teams", "players"
+  add_foreign_key "player_teams", "teams"
+  add_foreign_key "team_games", "games"
+  add_foreign_key "team_games", "teams"
   add_foreign_key "teams", "seasons"
 end

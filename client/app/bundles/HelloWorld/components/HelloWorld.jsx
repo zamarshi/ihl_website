@@ -1,6 +1,4 @@
 import React, { PropTypes } from 'react';
-import ReactDOM from 'react-dom';
-import {Table, Column, Cell} from 'fixed-data-table';
 
 export default class HelloWorld extends React.Component {
   static propTypes = {
