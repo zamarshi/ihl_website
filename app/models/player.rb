@@ -12,15 +12,15 @@ class Player < ApplicationRecord
   has_many :seasons, through: :player_seasons, source: :season
 
   def add_season (s)
-    player_season.create(season_id: s.id)
+    player_seasons.create(season_id: s.id)
   end
 
   def add_game (g)
-    player_game.create(game_id: g.id)
+    player_games.create(game_id: g.id)
   end
 
-  def add_team (g)
-    player_game.create(game_id: g.id)
+  def add_team (t)
+    player_teams.create(game_id: t.id)
   end
 
 end

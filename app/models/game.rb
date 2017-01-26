@@ -8,4 +8,12 @@ class Game < ApplicationRecord
 
   has_many :team_games, dependent: :destroy
   has_many :teams, through: :team_games, source: :team
+
+
+
+  def add_team (t)
+    team_games.create(game_id: t.id)
+  end
+
+
 end
