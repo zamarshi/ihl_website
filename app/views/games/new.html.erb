@@ -1,0 +1,12 @@
+<%= form_for @game do |f| %>
+Date:
+<div>
+  <%= f.datetime_select :date %>
+</div><br>
+  Home Team:
+  <%= f.collection_select :team_id, Team.all, :id, :name %>
+  Away Team:
+  <div><br>
+  <%= f.submit %>
+</div>
+<% end %>
