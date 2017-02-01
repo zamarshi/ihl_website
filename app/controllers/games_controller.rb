@@ -6,16 +6,13 @@ class GamesController < ApplicationController
   end
 
   def create
-    
-    @game = Game.new params.require(:game).permit([:date,
-                                      team_ids: []])
-
+    @game = Game.new game_params
       if @game.save
         flash[:notice] = 'Game Created!'
         redirect_to new_game_path(@game)
       else
-      flash.now[:alert] = 'Please see errors below'
-      redirect_to new_game_path(@game)
+        flash.now[:alert] = 'Please see errors below'
+        redirect_to new_game_path(@game)
       end
   end
 
@@ -24,6 +21,15 @@ class GamesController < ApplicationController
   end
 
   def edit
+  end
+
+  private
+
+  def game_params
+    params.require(:game).permit([:date,
+                                  :season_id,
+                                  :home_team_id,
+                                  :away_team_id])
   end
 
 end

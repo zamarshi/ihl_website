@@ -1,12 +1,29 @@
-<%= form_for @game do |f| %>
-Date:
-<div>
-  <%= f.datetime_select :date %>
-</div><br>
-  Home Team:
-  <%= f.collection_select :team_id, Team.all, :id, :name %>
-  Away Team:
-  <div><br>
-  <%= f.submit %>
-</div>
+<%= @game.errors.full_messages.join(', ') %>
+
+
+<%= simple_form_for @game, html: { class: 'form-vertical' } do |f| %>
+
+    <div class="dropdown">
+        <%= f.association :season, collection: Season.order(:name) %>
+    </div>
+
+    <div class="dropdown">
+      <%= f.datetime_select :date,  :minute_step => 15, :ampm => true %>
+    </div>
+
+    <div class="dropdown">
+      <%= f.association :home_team, collection: Team.order(:name)
+ %>
+    </div>
+
+    <div class="dropdown">
+      <%= f.association :away_team, collection: Team.order(:name)
+ %>
+    </div>
+
+
+
+    <div class="submit">
+        <%= f.submit "Submit" %>
+    </div>
 <% end %>
