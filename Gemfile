@@ -31,6 +31,7 @@ gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'rack-cors'
 gem 'cowsay'
 gem 'react_on_rails'
+gem 'simple_form'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

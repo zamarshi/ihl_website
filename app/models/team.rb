@@ -1,8 +1,8 @@
 class Team < ApplicationRecord
   belongs_to :season
 
-  has_many :games, through: :team_games, source: :game
-  has_many :team_games
+  has_many :home_games, :class_name => "Game", :foreign_key => 'home_team_id'
+  has_many :away_games, :class_name => "Game", :foreign_key => 'away_team_id'
 
   has_many :players, through: :player_teams, source: :player
   has_many :player_teams
