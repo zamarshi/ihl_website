@@ -9,10 +9,6 @@ class Team < ApplicationRecord
 
   has_many :goals, dependent: :nullify
 
-  def add_game(g)
-    team_games.create(game_id: g.id)
-  end
-
   def add_player (p)
     player_teams.create(player_id: p.id)
   end

@@ -1,0 +1,13 @@
+
+<%= form_tag games_path, :method => 'get' do %>
+  <%= collection_select :game, :season_id, Season.order(name: :desc), :id, :name, prompt: true %>
+  <%= submit_tag 'Filter' %>
+<% end %>
+<hr>
+
+<% @games.each do |g| %>
+  <%= link_to g.date, game_path(g) %>
+  <%= link_to g.home_team.name, game_path(g) %>
+  <%= link_to g.away_team.name, game_path(g) %>
+  <hr>
+<% end %>
