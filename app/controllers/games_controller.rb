@@ -8,16 +8,27 @@ class GamesController < ApplicationController
   def create
     @game = Game.new game_params
       if @game.save
-        flash[:notice] = 'Game Created!'
-        redirect_to new_game_path(@game)
+        redirect_to root_path, notice: 'Game Created'
+
       else
         flash.now[:alert] = 'Please see errors below'
         redirect_to new_game_path(@game)
       end
   end
 
-  def destroy
 
+  def index
+    if params[:game] && params[:game][:season_id]
+      @games = Game.where(season_id: params[:game][:season_id])
+    else
+      @games = Game.where(season: current_season)
+    end
+  end
+
+  def show
+    @game = 
+  end
+  def destroy
   end
 
   def edit

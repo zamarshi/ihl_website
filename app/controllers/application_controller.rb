@@ -14,6 +14,16 @@ class ApplicationController < ActionController::Base
                                  # ApplicationController then it's accessible to
                                  # all views.
 
+  def set_current_season (s)
+    Season.all.current_season = false
+    s.current_season = true
+  end
+
+  def current_season
+    Season.where(current_season: true)
+  end
+
+
   def current_user
     @current_user ||= User.find(session[:user_id]) if user_signed_in?
   end
