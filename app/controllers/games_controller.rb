@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
-  # before_action :authenticate_user, except: [:index, :show]
+
+  before_action :find_game, except: [:new, :create, :index]
 
   def new
     @game = Game.new
@@ -18,16 +19,21 @@ class GamesController < ApplicationController
 
 
   def index
-    if params[:game] && params[:game][:season_id]
+    if params[:game] && (params[:game][:season_id] != '')
       @games = Game.where(season_id: params[:game][:season_id])
+      @season = Season.find(params[:game][:season_id])
     else
       @games = Game.where(season: current_season)
+      @season = current_season
     end
   end
 
   def show
-    @game = 
+    @goals = Goal.where(game: @game)
+    @home_team_goals = Goal.where(game: @game, team: @game.home_team)
+    @away_team_goals = Goal.where(game: @game, team: @game.away_team)
   end
+
   def destroy
   end
 
@@ -42,5 +48,9 @@ class GamesController < ApplicationController
                                   :home_team_id,
                                   :away_team_id])
   end
+
+  def find_game
+      @game = Game.find params[:id]
+    end
 
 end

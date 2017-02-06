@@ -1,0 +1,10 @@
+
+<% if !@goals.any? %>
+  <h1> <%= @game.date.strftime('%A, %d %b %Y %l:%M %p') %>: - </h1>
+  <h1> <%= @game.home_team.name %>: - </h1>
+  <h1> <%= @game.away_team.name %>: - </h1>
+<% else %>
+  <h1> Final </h1>
+  <h1> <%= @game.home_team.name %>: <%= @home_team_goals.count %></h1>
+  <h1> <%= @game.away_team.name %>: <%= @away_team_goals.count %> </h1>
+<% end %>
