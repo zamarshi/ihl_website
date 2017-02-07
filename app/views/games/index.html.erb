@@ -6,7 +6,7 @@
 <hr>
 
 <% @games.each do |g| %>
-  <%= link_to g.date, game_path(g) %>
+  <%= link_to g.date.strftime('%A, %d %b %Y %l:%M %p'), game_path(g) %>
   <%= link_to g.home_team.name, game_path(g) %>
   <%= link_to g.away_team.name, game_path(g) %>
   <hr>
