@@ -34,6 +34,8 @@ gem 'react_on_rails'
 gem 'simple_form'
 gem 'nested_form_fields'
 gem "cocoon"
+gem "font-awesome-rails"
+
 
 
 # Use Capistrano for deployment

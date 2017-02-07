@@ -1,5 +1,6 @@
+
 <%= form_tag games_path, :method => 'get' do %>
-  <%= collection_select :game, :season_id, Season.order(name: :desc), :id, :name, prompt: 'Season' %>
+  <%= collection_select :game, :season_id, Season.order(name: :desc), :id, :name, prompt: @season.name %>
   <%= submit_tag 'Filter' %>
 <% end %>
 <hr>
