@@ -34,7 +34,14 @@ class GamesController < ApplicationController
   end
 
   def destroy
-  end
+    @game = Game.find params[:id]
+    respond_to do |format|
+        season = @game.season
+        @game.destroy
+        format.html { redirect_to seasons_path, notice: 'Game deleted!' }
+        format.js   { render } # destroy.js.erb
+      end
+    end
 
   def edit
   end
