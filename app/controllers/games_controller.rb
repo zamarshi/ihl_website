@@ -7,14 +7,13 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = Game.new game_params
-      if @game.save
-        redirect_to root_path, notice: 'Game Created'
-
-      else
-        flash.now[:alert] = 'Please see errors below'
-        redirect_to new_game_path(@game)
-      end
+    # @game = Game.new game_params
+    #   if @game.save
+    #     redirect_to root_path, notice: 'Game Created'
+    #   else
+    #     flash.now[:alert] = 'Please see errors below'
+    #     redirect_to new_game_path(@game)
+    #   end
   end
 
 
