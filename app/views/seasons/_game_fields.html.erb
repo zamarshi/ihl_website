@@ -1,0 +1,16 @@
+<div class='nested-fields'>
+
+  <div class="dropdown">
+    <%= f.datetime_select :date,  :minute_step => 15, :ampm => true %>
+  </div>
+
+  <div class="dropdown">
+    <%= f.association :home_team, collection: Team.order(:name)%>
+  </div>
+
+  <div class="dropdown">
+    <%= f.association :away_team, collection: Team.order(:name)%>
+  </div>
+
+    <%= link_to_remove_association "remove game", f %>
+</div>

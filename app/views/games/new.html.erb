@@ -2,6 +2,7 @@
 
 
 <%= simple_form_for @game, html: { class: 'form-vertical' } do |f| %>
+
     <div class="dropdown">
         <%= f.association :season, collection: Season.order(:name) %>
     </div>

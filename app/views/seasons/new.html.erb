@@ -1,0 +1,21 @@
+<%= @season.errors.full_messages.join(', ') %>
+
+<%= simple_form_for @season do |f| %>
+  <%= f.input :name %>
+
+  <h3>Games</h3>
+
+  <div>
+    <%= f.simple_fields_for :games do |game| %>
+      <%= render 'game_fields', :f => game %>
+    <% end %>
+    <div>
+      <%= link_to_add_association 'add game', f, :games %>
+    </div>
+  </div>
+
+    <%= f.submit 'Save' %>
+<% end %>
+
+
+<%= params.inspect %>

@@ -32,6 +32,9 @@ gem 'rack-cors'
 gem 'cowsay'
 gem 'react_on_rails'
 gem 'simple_form'
+gem 'nested_form_fields'
+gem "cocoon"
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
