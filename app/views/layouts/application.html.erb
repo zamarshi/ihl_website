@@ -23,7 +23,7 @@
           <span class="icon-bar"></span>
         </button>
         <ul>
-          <li class="navbar-brand">  <%= link_to 'IHL', root_path %></li>
+          <li class="navbar-brand ">  <%= link_to 'IHL', root_path %></li>
         </ul>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
@@ -33,7 +33,7 @@
             <%= link_to 'About', root_path %>
           </li>
           <li>
-            <%= link_to 'Schedule', games_path %>
+            <%= link_to 'Schedule', seasons_path %>
           </li>
           <li>
             <%= link_to 'Statistics', root_path %>
@@ -42,7 +42,11 @@
             <%= link_to 'Standings', root_path %>
           </li>
           <li>
-            <%= link_to 'Create Schedule', new_game_path %>
+            <%= link_to 'Create New Season Schedule', new_season_path %>
+          </li>
+
+          <li>
+            <%= link_to 'Edit Existing Schedule'%>
           </li>
 
 
