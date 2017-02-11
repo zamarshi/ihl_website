@@ -4,6 +4,7 @@ class SeasonsController < ApplicationController
 
   def new
     @season = Season.new
+    @team = Team.new
   end
 
   def create
@@ -52,10 +53,12 @@ class SeasonsController < ApplicationController
   private
 
     def season_params
-      params.require(:season).permit(:name, games_attributes: [:id, :date,
-                                                              :home_team_id,
-                                                              :away_team_id,
-                                                              :_destroy])
+      params.require(:season).permit(:name,
+                                      games_attributes: [:id, :date,
+                                                         :home_team_id,
+                                                         :away_team_id,
+                                                         :_destroy],
+                                      teams_attributes: [:id, :name, :_destroy])
     end
 
     def find_season
