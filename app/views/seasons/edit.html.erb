@@ -12,7 +12,6 @@
 <% end %>
 
 
-
 <% @season.games.each do |g| %>
 <div id='game_<%=g.id %>'>
   <%= link_to g.date.strftime('%A, %d %b %Y %l:%M %p'), game_path(g) %>
