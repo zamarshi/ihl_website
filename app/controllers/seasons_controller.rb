@@ -26,18 +26,20 @@ class SeasonsController < ApplicationController
     else
       puts @season.errors.full_messages.join(', ')
       flash.now[:alert] = 'Please see errors below'
-      redirect_to new_season_path(@season)
+      redirect_to new_season_path( @season)
     end
   end
 
   def show
+    @game = Game.new
   end
 
   def destroy
-    
+
   end
 
   def index
+    @seasons = Season.all
     if params[:game] && (params[:game][:season_id] != '')
       @games = Game.where(season_id: params[:game][:season_id])
       @season = Season.find(params[:game][:season_id])

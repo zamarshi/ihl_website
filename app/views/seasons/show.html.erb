@@ -1,0 +1,25 @@
+<div class="row">
+  <div id='game-form'>
+    <%= render 'game_form' %>
+  </div>
+  <div id='games'>
+    <% @season.games.each do |games| %>
+      <%# ans will be a local variable in the partial we're rendering. Partials
+          share the same instance variable as the file they're rendered from
+          but if you want a local variable then you will have to pass it in  %>
+          <div id='game_<%=g.id %>'>
+            <%= link_to g.date.strftime('%A, %d %b %Y %l:%M %p'), game_path(g) %>
+            <%= link_to g.home_team.name, game_path(g) %>
+            <%= link_to g.away_team.name, game_path(g) %>
+            <%= link_to game_path(g),
+                              method: :delete,
+                              remote: true,
+                              data: { confirm: 'are you sure?' },
+                              class: "pull-right" do %>
+                    <span class="glyphicon glyphicon-trash"></span>
+                  <% end %>
+                <hr>
+            </div>
+    <% end %>
+  </div>
+</div>
