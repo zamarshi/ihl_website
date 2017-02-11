@@ -2,5 +2,14 @@
 
 <%= simple_form_for @season do |f| %>
   <%= f.input :name %>
-  <%= f.button :submit %>
+  <h3>Teams</h3>
+  <div class="form-group">
+    <%= f.simple_fields_for :teams do |team| %>
+      <%= render 'team_fields', :f => team %>
+    <% end %>
+    <div class='links'>
+      <%= link_to_add_association 'add team', f, :teams %>
+    </div>
+  </div>
+  <%= f.submit 'Save' %>
 <% end %>
