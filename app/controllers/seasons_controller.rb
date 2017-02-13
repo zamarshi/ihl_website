@@ -50,6 +50,17 @@ class SeasonsController < ApplicationController
     end
   end
 
+
+  def schedule
+    if params[:game] && (params[:game][:season_id] != '')
+      @season = Season.find(params[:game][:season_id])
+    else
+      @games = Game.where(season: current_season)
+      @season = current_season
+    end
+  end
+
+
   private
 
     def season_params

@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_season
-    Season.where(current_season: true)
+    Season.where("current_season = true").find(1)
   end
 
 

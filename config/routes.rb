@@ -7,6 +7,11 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create] do
     delete :destroy, on: :collection
   end
+
+  get '/schedule', to: 'seasons#schedule', as: 'schedule'
+
+
+  resources :games
   resources :seasons do
     resources :games
   end
