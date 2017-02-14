@@ -1,0 +1,2 @@
+$('#games').prepend("<%= j render 'game', g: @game %>");
+$('#game_<%=@game.id%>').hide().slideDown();

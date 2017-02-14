@@ -1,0 +1,10 @@
+
+  <%= form_for [@season, @game], remote: true do |f| %>
+
+     <div> <%= f.datetime_select :date, :minute_step => 15, prompt: true %> </div>
+      <div> <%= f.collection_select(:home_team_id, Team.all, :id, :name, {:prompt => 'Home Team'}) %> </div>
+      <div> <%= f.collection_select(:away_team_id, Team.all, :id, :name, {:prompt => 'Away Team'}) %> </div>
+
+    <%= f.submit class: "btn btn-default" %>
+  <% end %>
+  <hr/>

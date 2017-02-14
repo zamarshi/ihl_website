@@ -20,9 +20,9 @@ class ApplicationController < ActionController::Base
   end
 
   def current_season
-    Season.where("current_season = true").find(1)
+    Season.where("current_season = true").first
   end
-
+  helper_method :current_season
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if user_signed_in?
