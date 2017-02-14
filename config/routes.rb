@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   get '/schedule', to: 'seasons#schedule', as: 'schedule'
 
 
-  resources :games
-  resources :seasons do
+  # resources :games
+
+  resources :seasons, shallow: true do
     resources :games
   end
 end

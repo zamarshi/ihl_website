@@ -1,7 +1,6 @@
 class SeasonsController < ApplicationController
 
   before_action :find_season, only: [:edit, :update, :destroy, :show]
-
   def new
     @season = Season.new
     @team = Team.new
@@ -33,6 +32,10 @@ class SeasonsController < ApplicationController
 
   def show
     @game = Game.new
+    respond_to do |format|
+      format.html { render }
+      format.json { render json: @season.to_json }
+  end
   end
 
   def destroy
