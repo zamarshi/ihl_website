@@ -72,7 +72,8 @@ class SeasonsController < ApplicationController
                                                          :home_team_id,
                                                          :away_team_id,
                                                          :_destroy],
-                                      teams_attributes: [:id, :name, :_destroy])
+                                      teams_attributes: [:id, :name, :avatar,
+                                                                    :_destroy])
     end
 
     def find_season
