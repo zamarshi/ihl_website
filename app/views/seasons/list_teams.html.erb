@@ -1,0 +1,14 @@
+<%= form_tag list_teams_path, :method => 'get' do %>
+  <%= collection_select :team, :season_id, Season.order(name: :desc), :id, :name, prompt: @season.name %>
+  <%= submit_tag 'Filter' %>
+<% end %>
+<hr>
+
+
+<% @season.teams.each do |t|%>
+  <%= link_to edit_team_path(t) do %>
+    <%= image_tag t.avatar.url(:medium) %>
+  <% end %>
+    <%= link_to t.name, edit_team_path(t) %>
+    <hr>
+<% end %>
