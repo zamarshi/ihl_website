@@ -1,0 +1,9 @@
+<h1><%= @user.first_name %> <%= @user.last_name %></h1>
+<h3><%= @user.email %></h3>
+<% if current_user.admin == true %>
+  <%= form_for @user do |f| %>
+    <%= f.label :admin %>
+    <%= f.check_box :admin, :id => 'admin' %>
+    <%= f.submit %>
+  <% end %>
+<% end %>

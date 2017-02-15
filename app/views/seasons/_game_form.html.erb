@@ -1,0 +1,16 @@
+
+<div class="col-xs-12">
+  <%# adding the `remote: true` option makes the form submit with jQuery
+      using the jquery_ujs library inlucded in the manifest file by
+      default and it will prevent default submission for the form as well
+      so it's going to use preventDefault() under the hood %>
+  <%= form_for [@season ,@game], remote: true do |f| %>
+    <div class="form-group">
+     <div> <%= f.datetime_select :date,  :minute_step => 15, :ampm => true %> </div>
+      <div> <%= f.collection_select(:home_team_id, Team.where(season_id: @season.id), :id, :name, {:prompt => 'Home Team'}) %> </div>
+      <div> <%= f.collection_select(:away_team_id, Team.where(season_id: @season.id), :id, :name, {:prompt => 'Away Team'}) %> </div>
+    </div>
+    <%= f.submit class: "btn btn-default" %>
+  <% end %>
+  <hr/>
+</div>
