@@ -9,11 +9,13 @@ Rails.application.routes.draw do
   end
 
   get '/schedule', to: 'seasons#schedule', as: 'schedule'
+  get '/list_teams', to: 'seasons#list_teams', as: 'list_teams'
 
 
   # resources :games
 
   resources :seasons, shallow: true do
     resources :games
+    resources :teams, only: [:edit]
   end
 end

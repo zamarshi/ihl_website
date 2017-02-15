@@ -22,7 +22,7 @@ class Player < ApplicationRecord
   end
 
   def add_team (t)
-    player_teams.create(game_id: t.id)
+    player_teams.create(team_id: t.id)
   end
 
 end

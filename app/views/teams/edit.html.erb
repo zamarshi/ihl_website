@@ -1,0 +1,13 @@
+<div>
+  <div id='player-to-team-form'>
+    <%= render 'players_form' %>
+  </div>
+
+<div id='players'>
+    <% @team.players.each do |player| %>
+        <div>
+          <%= render('players/player', { p: player }) %>
+        </div>
+    <% end %>
+  </div>
+</div>
