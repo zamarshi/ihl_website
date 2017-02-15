@@ -9,7 +9,8 @@ class UsersController < ApplicationController
                                                 :last_name,
                                                 :email,
                                                 :password,
-                                                :password_confirmation])
+                                                :password_confirmation,
+                                                :admin])
     @user = User.new user_params
     if @user.save
       session[:user_id] = @user.id
@@ -18,5 +19,33 @@ class UsersController < ApplicationController
       render :new
     end
   end
-  
+
+  def update
+    @user = User.find(params[:id])
+    user_params = params.require(:user).permit([:first_name,
+                                                :last_name,
+                                                :email,
+                                                :password,
+                                                :password_confirmation,
+                                                :admin])
+    if @user.update(user_params)
+      if @user.admin == true
+        flash[:notice] = "Admin added"
+      else
+        flash[:alert] = "Admin removed"
+      end
+      redirect_to user_path
+    else
+      render :index
+    end
+  end
+
+  def index
+    @users = User.all
+  end
+
+  def show
+    @user = User.find(params[:id])
+  end
+
 end

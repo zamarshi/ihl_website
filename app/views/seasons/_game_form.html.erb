@@ -7,8 +7,8 @@
   <%= form_for [@season ,@game], remote: true do |f| %>
     <div class="form-group">
      <div> <%= f.datetime_select :date,  :minute_step => 15, :ampm => true %> </div>
-      <div> <%= f.collection_select(:home_team_id, Team.all, :id, :name, {:prompt => 'Home Team'}) %> </div>
-      <div> <%= f.collection_select(:away_team_id, Team.all, :id, :name, {:prompt => 'Away Team'}) %> </div>
+      <div> <%= f.collection_select(:home_team_id, Team.where(season_id: @season.id), :id, :name, {:prompt => 'Home Team'}) %> </div>
+      <div> <%= f.collection_select(:away_team_id, Team.where(season_id: @season.id), :id, :name, {:prompt => 'Away Team'}) %> </div>
     </div>
     <%= f.submit class: "btn btn-default" %>
   <% end %>
