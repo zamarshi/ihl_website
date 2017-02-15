@@ -63,7 +63,14 @@ class SeasonsController < ApplicationController
     end
   end
 
-
+  def list_teams
+    if params[:team] && (params[:team][:season_id] != '')
+      @season = Season.find(params[:team][:season_id])
+    else
+      @teams = Team.where(season: current_season)
+      @season = current_season
+  end
+end
   private
 
     def season_params

@@ -1,0 +1,12 @@
+<div id='player<%=p.id %>'>  
+  <%= link_to g.date.strftime('%A, %d %b %Y %l:%M %p'), game_path(g) %>
+  <%= link_to g.home_team.name, game_path(g) %>
+  <%= link_to g.away_team.name, game_path(g) %>
+  <%= link_to game_path(g),
+                    method: :delete,
+                    remote: true,
+                    data: { confirm: 'are you sure?' },
+                    class: "pull-right" do %>
+          <span class="glyphicon glyphicon-trash"></span>
+        <% end %>
+</div>
