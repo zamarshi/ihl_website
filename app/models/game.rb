@@ -18,4 +18,26 @@ class Game < ApplicationRecord
   end
 
 
+    include AASM
+    aasm whiny_transitions: false do
+      state :scheduled, initial: true
+      state :played
+      state :canceled
+
+
+      event :play do
+        transitions from: :scheduled, to: :played
+      end
+
+      event :cancel do
+        transitions from: :scheduled, to: :canceled
+      end
+
+      event :replay do
+        transitions from: :played, to: :scheduled
+      end
+
+    end
+
+
 end

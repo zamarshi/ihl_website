@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170214073250) do
+ActiveRecord::Schema.define(version: 20170214235225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20170214073250) do
     t.datetime "updated_at",   null: false
     t.integer  "home_team_id"
     t.integer  "away_team_id"
+    t.string   "aasm_state"
     t.index ["season_id"], name: "index_games_on_season_id", using: :btree
   end
 
@@ -79,10 +80,12 @@ ActiveRecord::Schema.define(version: 20170214073250) do
   end
 
   create_table "players", force: :cascade do |t|
-    t.string   "name"
     t.datetime "date_of_birth"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "user_id"
   end
 
   create_table "seasons", force: :cascade do |t|

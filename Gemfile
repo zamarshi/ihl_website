@@ -34,8 +34,8 @@ gem 'react_on_rails'
 gem 'simple_form'
 gem 'nested_form_fields'
 gem "cocoon"
-gem "font-awesome-rails"
 gem "paperclip", "~> 5.0.0"
+gem 'aasm'
 
 
 

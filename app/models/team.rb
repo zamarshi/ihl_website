@@ -18,4 +18,7 @@ class Team < ApplicationRecord
     player_teams.create(player_id: p.id)
   end
 
+
+
+
 end

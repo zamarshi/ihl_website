@@ -13,10 +13,10 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       session[:user_id] = @user.id
+      Player.create(user:@user, first_name: @user.first_name, last_name: @user.last_name)
       redirect_to root_path, notice: 'Thank you for signing up'
     else
       render :new
     end
   end
-  
 end
