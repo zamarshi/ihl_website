@@ -1,12 +1,15 @@
+
 <div>
   <div id='player-to-team-form'>
     <%= render 'players_form' %>
   </div>
 
+<div> <%=@team.season.name + ' ' + @team.name%>: </div>
 <div id='players'>
-    <% @team.players.each do |player| %>
+    <% @team.player_teams.each do |player_team| %>
         <div>
-          <%= render('players/player', { p: player }) %>
+          <% player = player_team.player %>
+          <%= render('players/player', {pt: player_team, p: player }) %>          
         </div>
     <% end %>
   </div>

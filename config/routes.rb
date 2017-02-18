@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   root 'home#index'
   resources :users
+  resources :players, only: [:show]
+  resources :player_teams
   resources :sessions, only: [:new, :create] do
     delete :destroy, on: :collection
   end

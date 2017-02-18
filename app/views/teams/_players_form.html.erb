@@ -1,0 +1,6 @@
+  <%= form_for [@player_team], remote: true do |f| %>
+      <div> <%= f.collection_select(:player_id, @players, :id, :full_name, {:prompt => 'Name'}) %> </div>
+      <%= f.hidden_field :team_id, value: @team.id %>
+    <%= f.submit 'Add Player', class: "btn btn-default" %>
+  <% end %>
+  <hr/>
