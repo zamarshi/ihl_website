@@ -13,7 +13,7 @@ class GamesController < ApplicationController
       if @game.save
         format.js { render :success }
         format.html do
-          redirect_to game_path(@game), notice: 'Answer created!'
+          redirect_to game_path(@game), notice: 'Game created!'
         end
       else
         format.js { render :create_failure }

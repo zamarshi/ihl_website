@@ -39,7 +39,6 @@ class SeasonsController < ApplicationController
   end
 
   def destroy
-
   end
 
   def index

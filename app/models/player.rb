@@ -13,6 +13,11 @@ class Player < ApplicationRecord
 
   belongs_to :user, :foreign_key => 'user_id'
 
+  def full_name
+    first_name + ' ' + last_name
+  end
+
+
   def add_season (s)
     player_seasons.create(season_id: s.id)
   end
