@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+Season.create(name: '2014-2015')
+Season.create(name: '2015-2016')
+Season.create(name: '2016-2017')

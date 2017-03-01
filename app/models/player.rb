@@ -1,6 +1,10 @@
 class Player < ApplicationRecord
   has_many :assists
+  accepts_nested_attributes_for :assists, :allow_destroy => true
+
   has_many :goals
+  accepts_nested_attributes_for :goals, :allow_destroy => true
+
 
   has_many :player_teams, dependent: :nullify
   has_many :teams_played_for, through: :player_teams, source: :team

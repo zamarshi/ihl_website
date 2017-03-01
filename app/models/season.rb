@@ -6,4 +6,11 @@ class Season < ApplicationRecord
   accepts_nested_attributes_for :games, allow_destroy: true
   accepts_nested_attributes_for :teams, allow_destroy: true
 
+
+  validates :name, presence: {message: 'Please Enter a Name'},
+                    uniqueness: { case_sensitive: false,
+                                  message: 'must be unique' }
+
+  validates :teams, presence: true
+
 end

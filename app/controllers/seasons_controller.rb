@@ -13,7 +13,7 @@ class SeasonsController < ApplicationController
     else
       puts @season.errors.full_messages.join(', ')
       flash.now[:alert] = 'Please see errors below'
-      redirect_to new_season_path(@season)
+      render :new
     end
   end
 

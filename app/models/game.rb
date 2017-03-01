@@ -6,6 +6,11 @@ class Game < ApplicationRecord
   belongs_to :season, inverse_of: :games
 
   has_many :goals, dependent: :destroy
+  accepts_nested_attributes_for :goals, :allow_destroy => true
+
+  has_many :assists, dependent: :destroy
+  accepts_nested_attributes_for :assists, :allow_destroy => true
+
 
   has_many :players, through: :player_games, source: :player
   has_many :player_games, dependent: :destroy
@@ -13,9 +18,6 @@ class Game < ApplicationRecord
   validates :date, presence: true,
                     uniqueness: true
 
-  def add_team (t)
-    team_games.create(game_id: t.id)
-  end
 
 
     include AASM
