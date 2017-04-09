@@ -49,15 +49,33 @@ class GamesController < ApplicationController
     end
 
   def edit
+    @home_team = @game.home_team
+    @away_team = @game.away_team
+  end
+
+  def update
+    if @game.update game_params
+      @game.play if @game.goals.exists?
+      @game.save
+      flash[:notice] = 'Game updated'
+      redirect_to game_path(@game)
+    else
+      flash.now[:alert] = 'Please see errors below!'
+      render :edit
+    end
   end
 
   private
 
   def game_params
-    params.require(:game).permit([:date,
+    params.require(:game).permit([:id,
+                                  :date,
                                   :season_id,
                                   :home_team_id,
-                                  :away_team_id])
+                                  :away_team_id,
+          goals_attributes: [:id, :team_id, :player_id, :_destroy,
+          assists_attributes: [:id,:team_id,:player_id, :goal_id, :_destroy]
+                                                                            ]])
   end
 
   def find_game

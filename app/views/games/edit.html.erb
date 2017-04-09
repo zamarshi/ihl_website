@@ -1,0 +1,15 @@
+<div class="w3-padding-large">
+  <div class="w3-content w3-justify w3-text-grey w3-padding-64">
+    <div class='home-team-game-form'>
+      <%= simple_form_for @game do |f| %>
+        <%= f.simple_fields_for :goals do |goal| %>
+          <%= render 'goal_fields', f: goal, g: @game %>
+        <% end %>
+        <div>
+          <%= link_to_add_association 'add goal', f, :goals %>
+        </div>
+      <%= f.button :submit %>
+      <% end %>
+    </div>
+  </div>
+</div>

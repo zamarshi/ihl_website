@@ -1,0 +1,10 @@
+<div class='nested-fields'>
+  <div> <%= f.collection_select(:player_id, @game.home_team.players.all, :id, :full_name, {:prompt => 'Goal Scorer'}) %> </div>
+  <%= f.hidden_field :team_id, value: @game.home_team.id %>
+  <%= f.simple_fields_for :assists do |assist| %>
+    <%= render 'assist_fields', f: assist %>
+  <% end %>
+  <div>
+    <%= link_to_add_association 'add assist', f, :assists %>
+  </div>  <%= link_to_remove_association "remove goal", f %>
+</div>

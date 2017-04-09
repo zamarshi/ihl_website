@@ -1,5 +1,6 @@
+<div class="w3-padding-large">
+  <div class="w3-content w3-justify w3-text-grey w3-padding-64">
 
-<div>
   <div id='player-to-team-form'>
     <%= render 'players_form' %>
   </div>
@@ -9,8 +10,9 @@
     <% @team.player_teams.each do |player_team| %>
         <div>
           <% player = player_team.player %>
-          <%= render('players/player', {pt: player_team, p: player }) %>          
+          <%= render('players/player', {pt: player_team, p: player }) %>
         </div>
     <% end %>
   </div>
+</div>
 </div>

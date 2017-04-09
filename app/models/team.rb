@@ -1,6 +1,6 @@
 class Team < ApplicationRecord
   belongs_to :season
-
+  has_many :games, foreign_key: :team_id
   has_many :home_games, :class_name => "Game", :foreign_key => 'home_team_id'
   has_many :away_games, :class_name => "Game", :foreign_key => 'away_team_id'
 
@@ -13,6 +13,9 @@ class Team < ApplicationRecord
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" },
                                       default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+
+  validates :name, presence: true
+
 
   def add_player (p)
     player_teams.create(player_id: p.id)

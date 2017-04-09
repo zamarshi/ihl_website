@@ -1,16 +1,18 @@
-<%= @season.errors.full_messages.join(', ') %>
+<div class="w3-padding-large">
+  <div class="w3-content w3-justify w3-text-grey w3-padding-64">
 
-<%= simple_form_for @season do |f| %>
-  <%= f.input :name %>
-  <h3>Teams</h3>
-  <div class="form-group">
-    <%= f.simple_fields_for :teams do |team| %>
-      <%= render 'team_fields', :f => team %>
-    <% end %>
-    <div class='links'>
-      <%= link_to_add_association 'add team', f, :teams %>
+  <%= simple_form_for @season do |f| %>
+    <%= f.input :name %>
+    <h3>Teams</h3>
+    <div class="form-group">
+      <%= f.simple_fields_for :teams do |team| %>
+        <%= render 'team_fields', :f => team %>
+      <% end %>
+      <div class='links'>
+        <%= link_to_add_association 'add team', f, :teams %>
+      </div>
     </div>
+    <%= f.submit 'Save' %>
+  <% end %>
   </div>
-  <%= f.submit 'Save' %>
-
-<% end %>
+</div>
