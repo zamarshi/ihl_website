@@ -1,3 +1,6 @@
+<div class="w3-padding-large">
+  <div class="w3-content w3-justify w3-text-grey w3-padding-64">
+
 <%= form_tag schedule_path, :method => 'get' do %>
   <%= collection_select :game, :season_id, Season.order(name: :desc), :id, :name, prompt: @season.name %>
   <%= submit_tag 'Filter' %>
@@ -15,3 +18,5 @@
         <%= link_to g.away_team.name, game_path(g) %>
       </div>
   <% end %>
+</div>
+</div>

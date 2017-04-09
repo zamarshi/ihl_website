@@ -6,94 +6,70 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  </head>
 
-<body>
-  <nav class="navbar navbar-inverse navbar-custom">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li>  <%= link_to 'IHL', root_path %></li>
-          <li>
-            <%= link_to 'About', root_path %>
-          </li>
-          <li>
-            <%= link_to 'Schedule', schedule_path %>
-          </li>
-          <li>
-            <%= link_to 'Statistics', root_path %>
-          </li>
-          <li>
-            <%= link_to 'Standings', root_path %>
-          </li>
-          <li>
-            <%= link_to 'Create New Season', new_season_path %>
-          </li>
+  <style>
+  body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+  .w3-row-padding img {margin-bottom: 12px}
+  /* Set the width of the sidenav to 120px */
+  .w3-sidenav {width: 120px;background: #222;}
+  /* Add a left margin to the "page content" that matches the width of the sidenav (120px) */
+  #main {margin-left: 120px}
+  /* Remove margins from "page content" on small screens */
+  @media only screen and (max-width: 600px) {#main {margin-left: 0}}
+  </style>
 
-          <li>
-            <%= link_to 'Edit Schedule', seasons_path%>
-          </li>
+  <body class="w3-black">
 
-          <li>
-            <%= link_to 'Edit Teams', list_teams_path%>
-          </li>
+  <!-- Icon Bar (Sidenav - hidden on small screens) -->
+  <nav class="w3-sidenav w3-center w3-small w3-hide-small">
+    <!-- Avatar image in top left corner -->
+    <img src="/w3images/avatar_smoke.jpg" style="width:100%">
 
-          <% if user_signed_in? %>
+    <%= link_to root_path, class: "w3-padding-large w3-black" do %>
+        <i class="fa fa-home w3-xxlarge"></i>
+        <p>HOME</p>
+    <% end %>
 
-            <li>
-              <%= button_to 'Sign out',
-                sessions_path,
-                method: :delete,
-                class: 'btn btn-default navbar-btn'
-                %>
-              </li>
+    <%= link_to schedule_path, class: "w3-padding-large w3-black" do %>
+        <i class="fa fa-calendar w3-xxlarge"></i>
+        <p>Schedule</p>
+    <% end %>
 
-          <% else %>
-            <li><%= link_to 'Sign up with email', new_user_path %></li>
-            <li><%= link_to 'Sign In', new_session_path %></li>
-            <% end %>
-        </ul>
-      </div>
-    </div>
+    <%= link_to list_teams_path, class: "w3-padding-large w3-black" do %>
+        <i class="fa fa-address-book w3-xxlarge"></i>
+        <p>Teams</p>
+    <% end %>
+
+    <%= link_to list_teams_path, class: "w3-padding-large w3-black" do %>
+        <i class="fa fa-address-book w3-xxlarge"></i>
+        <p>Teams</p>
+    <% end %>
+
+    <%= link_to list_teams_path, class: "w3-padding-large w3-black" do %>
+        <i class="fa fa-address-book w3-xxlarge"></i>
+        <p>Teams</p>
+    <% end %>
+
+
   </nav>
 
-  <div class="container-fluid">
-    <% if notice || alert %>
-          <%# the ternary is used to set the alert type based on whether we received
-          notification or an alert %>
-          <div
-            class="alert alert-<%= notice ? 'success' : 'danger'%> alert-dismissable"
-            role="alert">
-            <%= notice || alert %>
-
-            <%# add x button to close notification element %>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="alert"
-              aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-        <% end %>
+  <!-- Navbar on small screens (Hidden on medium and large screens) -->
+  <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+    <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+      <%= link_to "Team", list_teams_path, class: "w3-bar-item w3-button" %>
+      <!-- <a class="w3-bar-item w3-button" style="width:25% !important" href="#">HOME</a>
+      <a class="w3-bar-item w3-button" style="width:25% !important" href="#about">ABOUT</a>
+      <a class="w3-bar-item w3-button" style="width:25% !important" href="#photos">PHOTOS</a>
+      <a class="w3-bar-item w3-button" style="width:25% !important" href="#contact">CONTACT</a> -->
     </div>
+  </div>
 
 
-
-<!-- Page Content -->
-
-    <%= yield %>
+  <%= yield %>
   </body>
+
+
 </html>

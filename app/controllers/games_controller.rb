@@ -55,10 +55,11 @@ class GamesController < ApplicationController
 
   def update
     if @game.update game_params
+      @game.play if @game.goals.exists?
+      @game.save
       flash[:notice] = 'Game updated'
       redirect_to game_path(@game)
     else
-      byebug
       flash.now[:alert] = 'Please see errors below!'
       render :edit
     end
