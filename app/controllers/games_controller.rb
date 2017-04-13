@@ -55,8 +55,11 @@ class GamesController < ApplicationController
 
   def update
     if @game.update game_params
-      @game.play if @game.goals.exists?
-      @game.save
+      if @game.goals.exists? && @game
+        @game.play
+        @game.save
+      end
+    end
       flash[:notice] = 'Game updated'
       redirect_to game_path(@game)
     else

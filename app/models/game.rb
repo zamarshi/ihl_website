@@ -2,6 +2,8 @@ class Game < ApplicationRecord
 
   belongs_to :home_team, :class_name => "Team"
   belongs_to :away_team, :class_name => "Team"
+  belongs_to :winning_team, :class_name => "Team"
+  belongs_to :losing_team, :class_name => "Team"
 
   belongs_to :season, inverse_of: :games
 
@@ -25,7 +27,6 @@ class Game < ApplicationRecord
       state :scheduled, initial: true
       state :played
       state :canceled
-
 
       event :play do
         transitions from: :scheduled, to: :played
