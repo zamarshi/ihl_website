@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/schedule', to: 'seasons#schedule', as: 'schedule'
   get '/list_teams', to: 'seasons#list_teams', as: 'list_teams'
   get '/standings', to: 'seasons#standings', as: 'standings'
+  get '/statistics', to: 'seasons#statistics', as: 'statistics'
 
 
   # resources :games

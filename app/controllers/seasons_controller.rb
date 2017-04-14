@@ -71,6 +71,19 @@ class SeasonsController < ApplicationController
     end
   end
 
+  def statistics
+    @seasons = Season.all
+    if params[:player] && (params[:player][:season_id] != '')
+      @player_seasons = PlayerSeason.where(season_id: params[:player][:season_id])
+      @players = @player_seasons.map(&:player)
+      @season = Season.find(params[:player][:season_id])
+    else
+      @player_seasons = PlayerSeason.where(season: current_season)
+      @players = @player_seasons.map(&:player)
+      @season = current_season
+    end
+  end
+
   def list_teams
     if params[:team] && (params[:team][:season_id] != '')
       @season = Season.find(params[:team][:season_id])

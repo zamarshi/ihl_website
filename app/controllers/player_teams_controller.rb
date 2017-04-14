@@ -1,13 +1,12 @@
 class PlayerTeamsController < ApplicationController
 
-
-
   def create
     @team = Team.find(params[:player_team][:team_id])
     @player = Player.find(params[:player_team][:player_id])
     @player_team = PlayerTeam.new player_team_params
+    @player_season = PlayerSeason.create(season: @team.season, player: @player)
     respond_to do |format|
-      if @player_team.save
+      if @player_team.save && @player_season.save
         format.js { render :add_player_success }
         format.html do
           # redirect_to team_path(@team), notice: 'Game created!'

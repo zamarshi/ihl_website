@@ -1,0 +1,26 @@
+<div class="w3-padding-large w3-padding-64" id="main">
+<%if Team.exists?%>
+<%= form_tag standings_path, :method => 'get' do %>
+  <%= collection_select :team, :season_id, Season.order(name: :desc), :id, :name, prompt: @season.name, class:"team-filter" %>
+  <%= submit_tag 'Filter' %>
+<% end %>
+<hr>
+<div class="team__list">
+<% @season.teams.each do |t|%>
+  <%# link_to edit_team_path(t) do %>
+    <%# image_tag t.avatar.url(:medium) %>
+  <%# end %>
+  <div class="team__name">
+    <%= link_to t.name, edit_team_path(t) %>
+    <%= t.games_played(@season) %>
+    <%= t.regulation_wins(@season) %>
+    <%= t.overtime_wins(@season) %>
+    <%= t.regulation_losses(@season) %>
+    <%= t.points(@season) %>
+  </div>
+<% end %>
+</div>
+<% else %>
+There are no teams
+<% end %>
+</div>
